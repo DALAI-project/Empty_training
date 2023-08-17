@@ -268,18 +268,18 @@ def build_fastai_model():
                                  )
                              )
 
-def initialize_model(num_classes, model_path, freeze=True, use_pretrained=True,
+def initialize_model(num_classes, model_path, freeze=True, from_scratch=True,
                      use_fai_classifier = True, model = 'resnet18'):
     if model == 'resnet18':
         #build fastai model in plain pytorch
         model_ft = build_fastai_model()
-        if use_pretrained:
+        if not from_scratch:
             model_ft.load_state_dict(torch.load(model_path), strict=False)
         if freeze:
             for param in model_ft[0].parameters():
                     param.requires_grad = False
     else:
-        if use_pretrained:
+        if not from_scratch:
             model_ft = models.densenet121(weights='DenseNet121_Weights.IMAGENET1K_V1')
             if freeze:
                 for param in model_ft.parameters():

@@ -75,6 +75,10 @@ If you want to use freeze the base model during training, you can specify it in 
 
 ```python train.py --epochs 10 --run_name 'run1' --freeze True```
 
+If you want to change learning rate, number of workers or batch size, you can specify it in the training command as below.
+
+```python train.py --epochs 10 --run_name 'run1' --lr 0.01 --num_workers 4 --batch 8```
+
 All of the examples above can be used in one command.
 
 ### Visualizing training metrics with Tensorboard
